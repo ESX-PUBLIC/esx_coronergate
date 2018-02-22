@@ -7,6 +7,7 @@ Thanks to them for sharing!
 I add Hacking fonction and modify the preview.
 
 To access to the Archive Room, One ambulance have to be on town.
+An alerte will popup to the ambulance when someone search on the ArchiveRoom
 
 You can change to more ambulance if you want.
 
