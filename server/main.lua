@@ -50,9 +50,9 @@ RegisterServerEvent('esx_coronergate:fail_esx_coronergate')
 AddEventHandler('esx_coronergate:fail_esx_coronergate', function()
   local _source = source
   local xPlayer  = ESX.GetPlayerFromId(source)
-  if xPlayer.getInventoryItem('esx_coronergate').count >= 1 then
-    xPlayer.removeInventoryItem('esx_coronergate', 1)
-    TriggerClientEvent('esx:showNotification', _source, "le esx_coronergate est détruit")
+  if xPlayer.getInventoryItem('journal').count >= 1 then
+    xPlayer.removeInventoryItem('journal', 1)
+    TriggerClientEvent('esx:showNotification', _source, "le journal est détruit")
   end
 end)
 
@@ -65,9 +65,9 @@ AddEventHandler('esx_coronergate:ouvrir_journal', function()
     TriggerClientEvent('esx:showNotification', _source, "vous lisez l'archive")
     Wait(5000)
     xPlayer.removeInventoryItem('journal', 1)
-	  TriggerClientEvent('esx:showNotification', _source, "vous avez lu archive")
+	  TriggerClientEvent('esx:showNotification', _source, "vous avez lu l'archive")
   else
-    TriggerClientEvent('esx:showNotification', _source, "vous devez avoir une archive")
+    TriggerClientEvent('esx:showNotification', _source, "vous devez avoir lu l'archive")
   end
 end)
 
