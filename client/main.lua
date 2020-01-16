@@ -183,8 +183,3 @@ function Notification(message)
     SetNotificationMessage("CHAR_LJT", "CHAR_LJT", true, 1, "~r~ALERTE:~s~", "HOPITAL"); --- Here for changed your notification --- Here for changed your notification
     DrawNotification(false, true);
 end
-
-RegisterNetEvent('esx_coronergate:showNotification')
-AddEventHandler('esx_coronergate:showNotification', function(notify)
-    Notification(notify)
-end)
