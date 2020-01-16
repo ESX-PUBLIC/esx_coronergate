@@ -1,5 +1,5 @@
-# FXserver-esx_coronergate
-FXServer ESX coronergate
+# esx_coronergate
+ESX coronergate
 
 First, the initial Jounal script was made by GTAVTRP: https://github.com/GTAVFTRP/journal/ 
 Thanks to them for sharing!
