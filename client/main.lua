@@ -1,11 +1,8 @@
 ESX = nil
-local CurrentActionData   = {}
-local lastTime            = 0
-local inprog = false
-local HasAlreadyEnteredMarker = false
-local LastZone                = nil
-
-
+local CurrentActionData = {}
+local lastTime = 0
+local inprog, HasAlreadyEnteredMarker = false, false
+local LastZone
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -18,7 +15,6 @@ end)
 archiveaction = {
 	{237.58204650879,  -1358.3923339844,  38.534332275391},
 }
-
 
 RegisterNetEvent('fouille')
 AddEventHandler('fouille', function(test)
@@ -35,38 +31,27 @@ AddEventHandler('fouille', function(test)
 	 else 
 	 	TriggerEvent('esx:showNotification', 'Pas d accès sans Médecin en ville!')	
 	   end
-
 end)
 
-
 function OpenDisp()
-
   local playerPed = GetPlayerPed(-1)
 
   TriggerServerEvent('atleastone')
-    
-	
-  
-
 end
 
 AddEventHandler('esx_coronergate:newsdispEnteredEntityZone', function(entity)
-  
     local playerPed = GetPlayerPed(-1)
 	       
 	  CurrentAction     = 'open_disp'
       CurrentActionMsg  = 'Appuyez sur ~INPUT_TALK~ pour fouiller les Archives'
-      
   end)
 
 AddEventHandler('esx_coronergate:newsdisphasExitedEntityZone', function(entity)
-  
+
    -- if CurrentAction == 'open_disp' then
       CurrentAction = nil
   --  end
-  
 end)
-
 
 Citizen.CreateThread(function()
 	while true do
@@ -87,15 +72,11 @@ Citizen.CreateThread(function()
 				isInMarker  = true
 				currentZone = k
 				end
-
 		end
-		
-		
+
 		if (isInMarker and not HasAlreadyEnteredMarker) or (isInMarker and LastZone ~= currentZone) then			
 				HasAlreadyEnteredMarker = true
 				LastZone                = currentZone
-
-
 		end
 
 		if not isInMarker and HasAlreadyEnteredMarker then
@@ -104,7 +85,7 @@ Citizen.CreateThread(function()
 		end
 		end
 	end)
-	
+
 --------------Hack les esx_coronergate pour lire---------------------
 function lockcbv(success)
 	if success then
@@ -120,7 +101,6 @@ function lockcbv(success)
 	end
 end
 
-
 RegisterNetEvent('esx_coronergate:trycrack')
 AddEventHandler('esx_coronergate:trycrack', function()
 	if inprog == false then
@@ -132,9 +112,7 @@ AddEventHandler('esx_coronergate:trycrack', function()
 	end
 end)
 
-
 ---------------------------------utiliser le esx_coronergate---------------------------------
-
 RegisterNetEvent('esx_coronergate:journal')
 AddEventHandler('esx_coronergate:journal', function()
   Citizen.CreateThread(function()
@@ -173,9 +151,7 @@ function ShowInfo(text, state)
   DisplayHelpTextFromStringLabel(0, state, 0, -1)
 end
 
-
 --------------- KEY CONTROLS -----------------
-
 Citizen.CreateThread(function()
   while true do
       Citizen.Wait(0)
@@ -196,12 +172,10 @@ Citizen.CreateThread(function()
 
           CurrentAction = nil               
       end
-	  
     end
-	
   end
-  
 end)
+
 -------------------- Image notification
 function Notification(message)
     SetNotificationTextEntry("STRING")
